@@ -17,6 +17,37 @@ body {
     animation-delay: calc(0.5s * var(--i));
 }
 
+
+#descubre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Agrega esto a tu CSS */
+.boton-descubre {
+    padding: 4px 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #000000;
+    text-align: center;
+    background: #ff60ff;
+    border-bottom: 4px solid #640064ae;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    animation: glow_boton 3s ease infinite ;
+}
+
+
+.boton-descubre:hover {
+    cursor: pointer;
+    background: #ffa0ff;
+    border-color: #1b001bae;
+    transition: background 0.3s ease-in, border-color 0.3s ease-in;
+    
+}
+
+/* ANIMACIONES*/
 @keyframes glow {
     0%, 8.33%, 100% {
         text-shadow: 0 0 10px #540054, 0 0 20px #540054;
@@ -24,6 +55,16 @@ body {
     }
     4.16% {
         text-shadow: 0 0 20px #ff46cb, 0 0 40px #ff46cb;
+        opacity: 1;
+    }
+}
+@keyframes glow_boton {
+    0%, 100% {
+        box-shadow: 0 0 5px #7ab8ff, 0 0 10px rgba(255, 96, 255, 0.5);
+        opacity: 0.9;
+    }
+    50% {
+        box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
         opacity: 1;
     }
 }
