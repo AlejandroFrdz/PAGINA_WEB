@@ -29,12 +29,3 @@ function animate() {
 
 animate();
 
-//###############CARGA PÁGINAS###############
-
-// Extrae el destino desde la query string: ?to=inicio.html
-const params = new URLSearchParams(window.location.search);
-const nextPage = params.get("to") || "Index.html";
-
-setTimeout(() => {
-  window.location.href = nextPage;
-}, 1600); // Duración de la animación
