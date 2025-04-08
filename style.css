@@ -70,6 +70,41 @@ body {
     
 }
 
+.marquee {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 1000;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    background: #141414;
+    color: #ff60ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  
+  .top-marquee {
+    top: 0;
+    border-bottom: 1px solid #ff60ff;
+  }
+  
+  .bottom-marquee {
+    bottom: 0;
+    border-top: 1px solid #ff60ff;
+  }
+  
+  .marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll-left 20s linear infinite;
+  }
+  
+  .marquee-content-bottom {
+    animation: scroll-right 20s linear infinite;
+  }
+  
 
 
 /* ANIMACIONES*/
@@ -93,5 +128,15 @@ body {
         opacity: 1;
     }
 }
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  @keyframes scroll-right {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100%); }
+  }
 
 
