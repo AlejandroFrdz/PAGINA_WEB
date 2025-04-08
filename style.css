@@ -1,194 +1,97 @@
-:root {
-    --primary-color: #ff46cb;
-    --primary-dark: #540054;
-    --secondary-color: #7ab8ff;
-    --text-color: #f1f1f1;
-    --bg-color: #141414;
-    --bg-light: #1e1e1e;
-    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    background: var(--bg-color);
-    color: var(--text-color);
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  
-  /* Loader */
-  .loader {
+body {
+    background: #141414;
+    color: #fff;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+/*ESTILOS PARA IDs*/
+#descubre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#circuloCursor {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.8s ease-out;
-  }
-  
-  .loader__inner {
-    width: 48px;
-    height: 48px;
-    border: 3px solid var(--primary-color);
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 96, 255, 0.85);
     border-radius: 50%;
-    border-top-color: transparent;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  .loader.fade-out {
-    opacity: 0;
     pointer-events: none;
-  }
-  
-  /* Main Content */
-  .main-content {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .glow-container {
-    text-align: center;
-    perspective: 1000px;
-  }
-  
-  .glow-text {
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease;
+    z-index: 9999;
+}
+
+
+
+
+
+/*ESTILOS PARA CLASES*/
+
+
+
+.glow-text span {
+    font-size: 5rem;
     display: inline-block;
-    font-weight: 700;
-    margin-bottom: 3rem;
-    line-height: 1.2;
-  }
-  
-  .glow-text span {
-    display: inline-block;
-    font-size: clamp(3rem, 8vw, 5rem);
-    opacity: 0.8;
+    opacity: 0.5;
     animation: glow 17s ease-out infinite;
     animation-delay: calc(0.5s * var(--i));
-    will-change: transform, opacity;
-    transform-style: preserve-3d;
-  }
-  
-  /* CTA Button */
-  .cta-wrapper {
-    margin-top: 2rem;
-  }
-  
-  .cta-button {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #000;
-    background: var(--primary-color);
-    border-radius: 50px;
+}
+
+
+
+.boton-descubre {
+    padding: 4px 10px;
+    font-size: 20px;
+    margin-top: 20px;
+    color: #000000;
+    text-align: center;
+    background: #ff60ff;
+    border-bottom: 4px solid #640064ae;
+    border-radius: 15px;
     text-decoration: none;
-    overflow: hidden;
-    transition: var(--transition);
-    z-index: 1;
-    border: none;
+    display: inline-block;
+    animation: glow_boton 3s ease infinite ;
+}
+
+
+.boton-descubre:hover {
     cursor: pointer;
-  }
-  
-  .cta-button span {
-    position: relative;
-    z-index: 2;
-    transition: var(--transition);
-  }
-  
-  .cta-button svg {
-    margin-left: 0.5rem;
-    stroke: #000;
-    transition: var(--transition);
-  }
-  
-  .cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    z-index: -1;
-    transition: var(--transition);
-    opacity: 0;
-  }
-  
-  .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .cta-button:hover::before {
-    opacity: 1;
-  }
-  
-  .cta-button:hover svg {
-    transform: translateX(5px);
-  }
-  
-  /* Animations */
-  @keyframes glow {
+    background: #ffa0ff;
+    border-color: #1b001bae;
+    transition: background 0.3s ease-in, border-color 0.3s ease-in;
+    
+}
+
+
+
+/* ANIMACIONES*/
+@keyframes glow {
     0%, 8.33%, 100% {
-      text-shadow: 0 0 10px var(--primary-dark), 0 0 20px var(--primary-dark);
-      opacity: 0.8;
-      transform: translateZ(0);
+        text-shadow: 0 0 10px #540054, 0 0 20px #540054;
+        opacity: 0.5;
     }
     4.16% {
-      text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
-      opacity: 1;
-      transform: translateZ(20px);
+        text-shadow: 0 0 20px #ff46cb, 0 0 40px #ff46cb;
+        opacity: 1;
     }
-  }
-  
-  /* Scroll Out Styles */
-  [data-scroll] {
-    transition: opacity 0.8s, transform 0.8s;
-  }
-  
-  [data-scroll="in"] {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  [data-scroll="out"] {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .glow-text span {
-      font-size: clamp(2.5rem, 10vw, 4rem);
+}
+@keyframes glow_boton {
+    0%, 100% {
+        box-shadow: 0 0 5px #7ab8ff, 0 0 10px rgba(255, 96, 255, 0.5);
+        opacity: 0.9;
     }
-    
-    .cta-button {
-      padding: 0.7rem 1.8rem;
-      font-size: 1rem;
+    50% {
+        box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
+        opacity: 1;
     }
-  }
+}
+
+

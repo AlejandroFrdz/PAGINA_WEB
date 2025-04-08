@@ -1,46 +1,40 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Splitting.js for text effects
-    Splitting();
-    
-    // Initialize ScrollOut for scroll animations
-    ScrollOut({
-      threshold: 0.2,
-      once: true
-    });
-    
-    // Loader animation
-    const loader = document.querySelector('.loader');
-    
-    // Simulate loading (replace with actual preloading if needed)
-    setTimeout(() => {
-      loader.classList.add('fade-out');
-      
-      // Remove loader from DOM after animation completes
-      loader.addEventListener('transitionend', () => {
-        loader.remove();
-      });
-    }, 1500);
-    
-    // Cursor effects (optional)
-    const cursor = document.createElement('div');
-    cursor.classList.add('custom-cursor');
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    });
-    
-    // Add hover effect to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .cta-button');
-    
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('cursor-hover');
-      });
-      
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('cursor-hover');
-      });
-    });
-  });
+// ###############PUNTERO###############
+
+//Velocidad del puntero
+//VARIABLES
+let followSpeed = 0.1; //Ajustarlo
+
+const circle = document.getElementById("circuloCursor");
+let ratonX= window.innerWidth / 2;
+let ratonY= window.innerHeight / 2;
+let circuloX = ratonX;
+let circuloY = ratonY;
+
+//LÓGICA
+//Animación del puntero (POSICIÓN)
+
+document.addEventListener("mousemove", (e) => {
+    ratonX = e.clientX;
+    ratonY = e.clientY;
+});
+
+//Animación suave usando requestAnimationFrame
+function animate() {
+    //Suavidad del puntero
+    circuloX += (ratonX - circuloX) * followSpeed;
+    circuloY += (ratonY - circuloY) * followSpeed;
+    circle.style.transform = `translate(${circuloX}px, ${circuloY}px)`;
+    requestAnimationFrame(animate);
+}
+
+animate();
+
+//###############CARGA PÁGINAS###############
+
+// Extrae el destino desde la query string: ?to=inicio.html
+const params = new URLSearchParams(window.location.search);
+const nextPage = params.get("to") || "Index.html";
+
+setTimeout(() => {
+  window.location.href = nextPage;
+}, 1600); // Duración de la animación
