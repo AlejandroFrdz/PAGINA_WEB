@@ -37,3 +37,30 @@ if (window.location.pathname.includes("CARGADOR.html")) {
     window.location.href = nextPage;
   }, 1600); // Duración de la animación
 }
+
+
+// ########### ANIMACIÓN SCROLL DE TEXTOS SINCRONIZADOS ###########
+
+function sincronizarMarquees() {
+  const velocidadPxPorSegundo = 100;
+  const marquees = document.querySelectorAll('.marquee-content');
+
+  marquees.forEach(marquee => {
+    const spans = marquee.querySelectorAll('span');
+    if(spans.length === 0) return;
+    
+    // Calculamos el ancho de un span + su padding
+    const ancho = spans[0].scrollWidth + parseInt(window.getComputedStyle(spans[0]).paddingRight);
+    
+    // Ajustamos la duración para que sea perfectamente continua
+    const duracion = (ancho * 2) / velocidadPxPorSegundo; // Multiplicamos por 2 por el contenido duplicado
+    
+    marquee.style.animationDuration = `${duracion}s`;
+  });
+}
+
+// Ejecutar al cargar
+window.addEventListener("load", sincronizarMarquees);
+// Y también si cambias el tamaño de la ventana
+window.addEventListener("resize", sincronizarMarquees);
+

@@ -1,142 +1,130 @@
+/* === GENERAL === */
 body {
-    background: #141414;
-    color: #fff;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+  background: #141414;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
-/*ESTILOS PARA IDs*/
+
+/* === IDS === */
 #descubre {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #circuloCursor {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 96, 255, 0.85);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: background-color 0.3s ease;
-    z-index: 9999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 96, 255, 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease;
+  z-index: 9999;
 }
 
-
-
-
-
-/*ESTILOS PARA CLASES*/
-
-
-
+/* === CLASES === */
 .glow-text span {
-    font-size: 5rem;
-    display: inline-block;
-    opacity: 0.5;
-    animation: glow 17s ease-out infinite;
-    animation-delay: calc(0.5s * var(--i));
+  font-size: 5rem;
+  display: inline-block;
+  opacity: 0.5;
+  animation: glow 17s ease-out infinite;
+  animation-delay: calc(0.5s * var(--i));
 }
-
-
 
 .boton-descubre {
-    padding: 4px 10px;
-    font-size: 20px;
-    margin-top: 20px;
-    color: #000000;
-    text-align: center;
-    background: #ff60ff;
-    border-bottom: 4px solid #640064ae;
-    border-radius: 15px;
-    text-decoration: none;
-    display: inline-block;
-    animation: glow_boton 3s ease infinite ;
+  padding: 4px 10px;
+  font-size: 20px;
+  margin-top: 20px;
+  color: #000000;
+  text-align: center;
+  background: #ff60ff;
+  border-bottom: 4px solid #640064ae;
+  border-radius: 15px;
+  text-decoration: none;
+  display: inline-block;
+  animation: glow_boton 3s ease infinite;
 }
-
 
 .boton-descubre:hover {
-    cursor: pointer;
-    background: #ffa0ff;
-    border-color: #1b001bae;
-    transition: background 0.3s ease-in, border-color 0.3s ease-in;
-    
+  cursor: pointer;
+  background: #ffa0ff;
+  border-color: #1b001bae;
+  transition: background 0.3s ease-in, border-color 0.3s ease-in;
 }
 
+/* === MARQUEES === */
 .marquee {
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 1000;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    background: #141414;
-    color: #ff60ff;
-    font-weight: bold;
-    text-transform: uppercase;
-    pointer-events: none;
-  }
-  
-  .top-marquee {
-    top: 0;
-    border-bottom: 1px solid #ff60ff;
-  }
-  
-  .bottom-marquee {
-    bottom: 0;
-    border-top: 1px solid #ff60ff;
-  }
-  
-  .marquee-content {
-    display: inline-block;
-    padding-left: 100%;
-    animation: scroll-left 20s linear infinite;
-  }
-  
-  .marquee-content-bottom {
-    animation: scroll-right 20s linear infinite;
-  }
-  
-
-
-/* ANIMACIONES*/
-@keyframes glow {
-    0%, 8.33%, 100% {
-        text-shadow: 0 0 10px #540054, 0 0 20px #540054;
-        opacity: 0.5;
-    }
-    4.16% {
-        text-shadow: 0 0 20px #ff46cb, 0 0 40px #ff46cb;
-        opacity: 1;
-    }
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  z-index: 1000;
+  font-size: 1.5rem;
+  letter-spacing: 10px;
+  background: #141414;
+  color: #ff60ff;
+  font-weight: bold;
+  text-transform: uppercase;
+  pointer-events: none;
 }
+
+.top-marquee {
+  padding-bottom: 1rem;
+  top: 1rem;
+  border-bottom: 1px solid #ff60ff;
+}
+
+.bottom-marquee {
+  padding-top: 1rem;
+  bottom: 1rem;
+  border-top: 1px solid #ff60ff;
+}
+
+.marquee-content {
+  display: inline-flex;
+  will-change: transform;
+  animation: scroll-left linear infinite;
+}
+
+.marquee-content span {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-right: 2em; /* Espacio entre copias */
+}
+
+/* === ANIMACIONES === */
+@keyframes glow {
+  0%, 8.33%, 100% {
+      text-shadow: 0 0 10px #540054, 0 0 20px #540054;
+      opacity: 0.5;
+  }
+  4.16% {
+      text-shadow: 0 0 20px #ff46cb, 0 0 40px #ff46cb;
+      opacity: 1;
+  }
+}
+
 @keyframes glow_boton {
-    0%, 100% {
-        box-shadow: 0 0 5px #7ab8ff, 0 0 10px rgba(255, 96, 255, 0.5);
-        opacity: 0.9;
-    }
-    50% {
-        box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
-        opacity: 1;
-    }
+  0%, 100% {
+      box-shadow: 0 0 5px #7ab8ff, 0 0 10px rgba(255, 96, 255, 0.5);
+      opacity: 0.9;
+  }
+  50% {
+      box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
+      opacity: 1;
+  }
 }
 
 @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
-  
-  @keyframes scroll-right {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
-  }
-
-
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Mueve solo la mitad del ancho total */
+}
