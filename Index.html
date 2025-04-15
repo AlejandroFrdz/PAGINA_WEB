@@ -10,26 +10,43 @@
 
 
   <article class="marquee top-marquee">
-    <div class="marquee-content">
-      <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · PROGRAMADOR WEB · </span>
-      <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · PROGRAMADOR WEB · </span>
+    <div class="pista-bucle pista-top">
+        <span class="loop-item">FOTÓGRAFO</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">FILMMAKER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">GRAPHIC DESIGNER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">PROGRAMADOR WEB</span>
+        <span class="loop-item dot">·</span>
+        
+        <span class="loop-item">FOTÓGRAFO</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">FILMMAKER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">GRAPHIC DESIGNER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">PROGRAMADOR WEB</span>
+        <span class="loop-item dot">·</span>
     </div>
   </article>
 
 
   <div class="glow-container">
     <h1 class="glow-text">
-      <span style="--i:0">F</span>
-      <span style="--i:1">E</span>
-      <span style="--i:2">R</span>
-      <span style="--i:3">N</span>
-      <span style="--i:4">Á</span>
-      <span style="--i:5">N</span>
-      <span style="--i:6">D</span>
-      <span style="--i:7">E</span>
-      <span style="--i:8">Z</span>
-      <span style="--i:9">Z</span>
-      <span style="--i:10">Z</span>
+      <div id="bloqueTexto">
+        <span class="ordenar" style="--i:0"></span>
+        <span class="ordenar" style="--i:1"></span>
+        <span class="ordenar" style="--i:2"></span>
+        <span class="ordenar" style="--i:3"></span>
+        <span class="ordenar" style="--i:4"></span>
+        <span class="ordenar" style="--i:5"></span>
+        <span class="ordenar" style="--i:6"></span>
+        <span class="ordenar" style="--i:7"></span>
+        <span class="ordenar" style="--i:8"></span>
+        <span class="ordenar" style="--i:9"></span>
+        <span class="ordenar" style="--i:10"></span>
+      </div>
     </h1>
     <div id="descubre">
       <a href="CARGADOR.html?to=inicio.html" class="boton-descubre">DESCÚBREME</a>
@@ -38,14 +55,43 @@
 
 
   <article class="marquee bottom-marquee">
-    <div class="marquee-content">
-      <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · PROGRAMADOR WEB ·</span>
-      <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · PROGRAMADOR WEB ·</span>
+    <div class="pista-bucle pista-abajo">
+        <span class="loop-item">FOTÓGRAFO</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">FILMMAKER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">GRAPHIC DESIGNER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">PROGRAMADOR WEB</span>
+        <span class="loop-item dot">·</span>
+        
+        <span class="loop-item">FOTÓGRAFO</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">FILMMAKER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">GRAPHIC DESIGNER</span>
+        <span class="loop-item dot">·</span>
+        <span class="loop-item">PROGRAMADOR WEB</span>
+        <span class="loop-item dot">·</span>
     </div>
   </article>
 
 
   <div id="circuloCursor"></div>
   <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script type="module">
+    import {ordenarTexto} from './ordenarTexto.js';
+
+    //EJECUTAR AL CARGAR
+    document.addEventListener('DOMContentLoaded', () => {
+      //Ejecutar la función para ordenar el texto
+      ordenarTexto('.ordenar', 'FERNANDEZZZ', {
+        speed: 10
+      });
+      
+    });
+
+  </script>
 </body>
 </html>

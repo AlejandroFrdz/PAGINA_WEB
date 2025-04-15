@@ -26,7 +26,27 @@
 </head>
 
 <body>
-  <div class="logoCarga">FERNÁNDEZZZ</div>
+  <div class="logoCarga">
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+    <span class="ordenarLogo"></span>
+  </div>
   <script src="main.js"></script>
+  <script type="module">
+    import { ordenarTexto } from './ordenarTexto.js';
+  
+    document.addEventListener('DOMContentLoaded', () => {
+      ordenarTexto('.ordenarLogo', 'LOADING...', {
+      });
+    });
+  </script>
+  
 </body>
 </html>

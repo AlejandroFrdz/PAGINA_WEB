@@ -35,32 +35,105 @@ if (window.location.pathname.includes("CARGADOR.html")) {
 
   setTimeout(() => {
     window.location.href = nextPage;
-  }, 1600); // Duración de la animación
+  }, 3500); // Duración de la animación
 }
 
 
-// ########### ANIMACIÓN SCROLL DE TEXTOS SINCRONIZADOS ###########
+// ########### ANIMACIÓN SCROLL DE TEXTOS CON GSAP ###########
 
-function sincronizarMarquees() {
-  const velocidadPxPorSegundo = 100;
-  const marquees = document.querySelectorAll('.marquee-content');
+function horizontalLoop(items, config) {
+  items = gsap.utils.toArray(items);
+  config = config || {};
+  let tl = gsap.timeline({
+      repeat: config.repeat,
+      paused: config.paused,
+      defaults: { ease: "none" },
+      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
+    }),
+    length = items.length,
+    startX = items[0].offsetLeft,
+    times = [],
+    widths = [],
+    xPercents = [],
+    curIndex = 0,
+    pixelsPerSecond = (config.speed || 1) * 100,
+    snap = config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1),
+    totalWidth,
+    curX,
+    distanceToStart,
+    distanceToLoop,
+    item,
+    i;
 
-  marquees.forEach(marquee => {
-    const spans = marquee.querySelectorAll('span');
-    if(spans.length === 0) return;
-    
-    // Calculamos el ancho de un span + su padding
-    const ancho = spans[0].scrollWidth + parseInt(window.getComputedStyle(spans[0]).paddingRight);
-    
-    // Ajustamos la duración para que sea perfectamente continua
-    const duracion = (ancho * 2) / velocidadPxPorSegundo; // Multiplicamos por 2 por el contenido duplicado
-    
-    marquee.style.animationDuration = `${duracion}s`;
+  gsap.set(items, {
+    xPercent: (i, el) => {
+      let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
+      xPercents[i] = snap((parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 + gsap.getProperty(el, "xPercent"));
+      return xPercents[i];
+    },
   });
+
+  gsap.set(items, { x: 0 });
+
+  totalWidth =
+    items[length - 1].offsetLeft +
+    (xPercents[length - 1] / 100) * widths[length - 1] -
+    startX +
+    items[length - 1].offsetWidth * gsap.getProperty(items[length - 1], "scaleX") +
+    (parseFloat(config.paddingRight) || 0);
+
+  for (i = 0; i < length; i++) {
+    item = items[i];
+    curX = (xPercents[i] / 100) * widths[i];
+    distanceToStart = item.offsetLeft + curX - startX;
+    distanceToLoop = distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
+
+    tl.to(
+      item,
+      { xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100), duration: distanceToLoop / pixelsPerSecond },
+      0
+    )
+    .fromTo(
+      item,
+      { xPercent: snap(((curX - distanceToLoop + totalWidth) / widths[i]) * 100) },
+      {
+        xPercent: xPercents[i],
+        duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+        immediateRender: false,
+      },
+      distanceToLoop / pixelsPerSecond
+    );
+
+    times[i] = distanceToStart / pixelsPerSecond;
+  }
+
+  tl.progress(1, true).progress(0, true);
+  if (config.reversed) {
+    tl.vars.onReverseComplete();
+    tl.reverse();
+  }
+  return tl;
 }
 
-// Ejecutar al cargar
-window.addEventListener("load", sincronizarMarquees);
-// Y también si cambias el tamaño de la ventana
-window.addEventListener("resize", sincronizarMarquees);
+document.addEventListener("DOMContentLoaded", function () {
+  horizontalLoop(document.querySelectorAll(".pista-top .loop-item"), {
+    paused: false,
+    repeat: -1,
+    speed: 1
+  });
+
+  horizontalLoop(document.querySelectorAll(".pista-abajo .loop-item"), {
+    paused: false,
+    repeat: -1,
+    speed: 1,
+    reversed: true
+  });
+});
+
+
+
+
+
+
+
 

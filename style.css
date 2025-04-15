@@ -32,7 +32,7 @@ body {
 }
 
 /* === CLASES === */
-.glow-text span {
+.glow-text .ordenar {
   font-size: 5rem;
   display: inline-block;
   opacity: 0.5;
@@ -69,7 +69,6 @@ body {
   white-space: nowrap;
   z-index: 1000;
   font-size: 1.5rem;
-  letter-spacing: 10px;
   background: #141414;
   color: #ff60ff;
   font-weight: bold;
@@ -92,7 +91,6 @@ body {
 .marquee-content {
   display: inline-flex;
   will-change: transform;
-  animation: scroll-left linear infinite;
 }
 
 .marquee-content span {
@@ -100,6 +98,23 @@ body {
   flex-shrink: 0;
   padding-right: 2em; /* Espacio entre copias */
 }
+
+.pista-bucle {
+  display: flex;
+  gap: 30px;
+}
+
+.loop-item {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ff60ff;
+  text-shadow: 0 0 10px #540054, 0 0 20px #540054;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 10px; 
+}
+
+
 
 /* === ANIMACIONES === */
 @keyframes glow {
@@ -122,9 +137,4 @@ body {
       box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
       opacity: 1;
   }
-}
-
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* Mueve solo la mitad del ancho total */
 }
