@@ -41,94 +41,41 @@ if (window.location.pathname.includes("CARGADOR.html")) {
 
 // ########### ANIMACIÓN SCROLL DE TEXTOS CON GSAP ###########
 
-function horizontalLoop(items, config) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({
-      repeat: config.repeat,
-      paused: config.paused,
-      defaults: { ease: "none" },
-      onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
-    }),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times = [],
-    widths = [],
-    xPercents = [],
-    curIndex = 0,
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1),
-    totalWidth,
-    curX,
-    distanceToStart,
-    distanceToLoop,
-    item,
-    i;
+// Animar todas las .slide-text
+document.querySelectorAll('.slide-text').forEach((slide) => {
+  let width = slide.scrollWidth;
 
-  gsap.set(items, {
-    xPercent: (i, el) => {
-      let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
-      xPercents[i] = snap((parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 + gsap.getProperty(el, "xPercent"));
-      return xPercents[i];
-    },
-  });
-
-  gsap.set(items, { x: 0 });
-
-  totalWidth =
-    items[length - 1].offsetLeft +
-    (xPercents[length - 1] / 100) * widths[length - 1] -
-    startX +
-    items[length - 1].offsetWidth * gsap.getProperty(items[length - 1], "scaleX") +
-    (parseFloat(config.paddingRight) || 0);
-
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = (xPercents[i] / 100) * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop = distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
-
-    tl.to(
-      item,
-      { xPercent: snap(((curX - distanceToLoop) / widths[i]) * 100), duration: distanceToLoop / pixelsPerSecond },
-      0
-    )
-    .fromTo(
-      item,
-      { xPercent: snap(((curX - distanceToLoop + totalWidth) / widths[i]) * 100) },
-      {
-        xPercent: xPercents[i],
-        duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
-        immediateRender: false,
-      },
-      distanceToLoop / pixelsPerSecond
-    );
-
-    times[i] = distanceToStart / pixelsPerSecond;
-  }
-
-  tl.progress(1, true).progress(0, true);
-  if (config.reversed) {
-    tl.vars.onReverseComplete();
-    tl.reverse();
-  }
-  return tl;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  horizontalLoop(document.querySelectorAll(".pista-top .loop-item"), {
-    paused: false,
+  gsap.to(slide, {
+    x: -width / 2,
+    duration: 20,
+    ease: 'none',
     repeat: -1,
-    speed: 1
-  });
-
-  horizontalLoop(document.querySelectorAll(".pista-abajo .loop-item"), {
-    paused: false,
-    repeat: -1,
-    speed: 1,
-    reversed: true
   });
 });
+
+
+//BOTON GSAP
+
+
+// Animación al hacer hover
+boton.addEventListener('mouseenter', () => {
+  gsap.to(boton, {
+    scale: 1.1,
+    duration: 0.3,
+    ease: "power1.out"
+  });
+});
+
+boton.addEventListener('mouseleave', () => {
+  gsap.to(boton, {
+    scale: 1,
+    duration: 0.3,
+    ease: "power1.out"
+  });
+});
+
+
+
 
 
 

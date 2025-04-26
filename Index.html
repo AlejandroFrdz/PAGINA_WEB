@@ -10,24 +10,13 @@
 
 
   <article class="marquee top-marquee">
-    <div class="pista-bucle pista-top">
-        <span class="loop-item">FOTÓGRAFO</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">FILMMAKER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">GRAPHIC DESIGNER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">PROGRAMADOR WEB</span>
-        <span class="loop-item dot">·</span>
-        
-        <span class="loop-item">FOTÓGRAFO</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">FILMMAKER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">GRAPHIC DESIGNER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">PROGRAMADOR WEB</span>
-        <span class="loop-item dot">·</span>
+    <div class="slide-text">
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
     </div>
   </article>
 
@@ -48,48 +37,53 @@
         <span class="ordenar" style="--i:10"></span>
       </div>
     </h1>
-    <div id="descubre">
-      <a href="CARGADOR.html?to=inicio.html" class="boton-descubre">DESCÚBREME</a>
-    </div>
+  </div>
+  <div id="descubre">
+    <a href="CARGADOR.html?to=inicio.html" class="boton-descubre">DESCÚBREME</a>
   </div>
 
 
   <article class="marquee bottom-marquee">
-    <div class="pista-bucle pista-abajo">
-        <span class="loop-item">FOTÓGRAFO</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">FILMMAKER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">GRAPHIC DESIGNER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">PROGRAMADOR WEB</span>
-        <span class="loop-item dot">·</span>
-        
-        <span class="loop-item">FOTÓGRAFO</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">FILMMAKER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">GRAPHIC DESIGNER</span>
-        <span class="loop-item dot">·</span>
-        <span class="loop-item">PROGRAMADOR WEB</span>
-        <span class="loop-item dot">·</span>
+    <div class="slide-text">
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
+        <span>FOTÓGRAFO · FILMMAKER · GRAPHIC DESIGNER · DESARROLLADORE WEB ·&nbsp;</span>
     </div>
   </article>
 
-
   <div id="circuloCursor"></div>
-  <script src="main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <script src="main.js"></script>
+
   <script type="module">
     import {ordenarTexto} from './ordenarTexto.js';
 
     //EJECUTAR AL CARGAR
     document.addEventListener('DOMContentLoaded', () => {
-      //Ejecutar la función para ordenar el texto
+      // Ejecutar la función para ordenar el texto
       ordenarTexto('.ordenar', 'FERNANDEZZZ', {
-        speed: 10
+        speed: 10,
+        onComplete: () => {
+          const boton = document.querySelector('.boton-descubre');
+          if (boton) {
+            // Forzar reflow para activar la transición
+            void boton.offsetWidth;
+            boton.classList.add('mostrar');
+          }
+        }
       });
       
+      // Fallback por si onComplete no se ejecuta
+      setTimeout(() => {
+        const boton = document.querySelector('.boton-descubre');
+        if (boton && !boton.classList.contains('mostrar')) {
+          boton.classList.add('mostrar');
+        }
+      }, 2000); // Máximo 5 segundos
     });
 
   </script>

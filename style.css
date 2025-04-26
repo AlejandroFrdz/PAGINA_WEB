@@ -8,13 +8,16 @@ body {
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  font-family: 'SPANISH_POINTER', sans-serif;
 }
 
 /* === IDS === */
 #descubre {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute; /* Lo saca del flujo normal */
+  bottom: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+
 }
 
 #circuloCursor {
@@ -41,18 +44,41 @@ body {
 }
 
 .boton-descubre {
-  padding: 4px 10px;
-  font-size: 20px;
-  margin-top: 20px;
-  color: #000000;
+  font-family: 'SPANISH_POINTER', 'Open Sans', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000;
   text-align: center;
-  background: #ff60ff;
-  border-bottom: 4px solid #640064ae;
-  border-radius: 15px;
   text-decoration: none;
+  background: #ff60ff;
+  cursor: pointer;
+  padding: 6px 15px;
+  margin-top: 30px;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
   display: inline-block;
-  animation: glow_boton 3s ease infinite;
+  position: relative;
+  opacity: 0;
+  will-change: opacity;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: opacity 5s ease-out;
+  animation: none;
 }
+
+.boton-descubre.mostrar {
+  opacity: 1;
+  animation: glow_boton 3s ease infinite 0.1s; /* Animación solo cuando es visible */
+}
+
+/* Resto de tu CSS... */
+.boton-descubre:active {
+  box-shadow:none;
+  top: 3px;
+  transform: translateY(3px);
+}
+
 
 .boton-descubre:hover {
   cursor: pointer;
@@ -61,7 +87,7 @@ body {
   transition: background 0.3s ease-in, border-color 0.3s ease-in;
 }
 
-/* === MARQUEES === */
+/* === SLIDE === */
 .marquee {
   position: fixed;
   width: 100%;
@@ -74,6 +100,7 @@ body {
   font-weight: bold;
   text-transform: uppercase;
   pointer-events: none;
+  font-family: 'SPANISH_POINTER', sans-serif;
 }
 
 .top-marquee {
@@ -88,30 +115,27 @@ body {
   border-top: 1px solid #ff60ff;
 }
 
-.marquee-content {
+.slide-text {
   display: inline-flex;
-  will-change: transform;
-}
-
-.marquee-content span {
+  flex-direction: row;
   white-space: nowrap;
-  flex-shrink: 0;
-  padding-right: 2em; /* Espacio entre copias */
+  align-items: center;
 }
 
-.pista-bucle {
+.slide-text > * {
+  display: inline-block;
+  font-size: 1.5rem; /* o el tamaño que quieras */
+}
+
+.glow-container{
+  height: 5rem; /* Ajusta según tu tamaño de fuente */
   display: flex;
-  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
-
-.loop-item {
-  font-weight: bold;
-  font-size: 2rem;
-  color: #ff60ff;
-  text-shadow: 0 0 10px #540054, 0 0 20px #540054;
-  text-transform: uppercase;
-  white-space: nowrap;
-  letter-spacing: 10px; 
+.glow-text, .ordenar{
+  will-change: transform;
 }
 
 
@@ -136,5 +160,19 @@ body {
   50% {
       box-shadow: 0 0 15px #ff46cb, 0 0 30px rgba(255, 70, 203, 0.7);
       opacity: 1;
+  }
+}
+
+@font-face{
+  font-family: 'SPANISH_POINTER';
+  src: url('/fuentes/Cinzel-VariableFont_wght.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+}
+
+
+@media (min-width: 768px) {
+  .boton-descubre {
+    padding: 8px 20px;
   }
 }
