@@ -22,6 +22,20 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
     }
+
+    #circuloCursor {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255, 96, 255, 0.85);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: background-color 0.3s ease;
+      z-index: 9999;
+    }
   </style>
 </head>
 
@@ -38,14 +52,21 @@
     <span class="ordenarLogo"></span>
     <span class="ordenarLogo"></span>
   </div>
+
+
+
+
+  <div id="circuloCursor"></div>
   <script src="main.js"></script>
   <script type="module">
-    import { ordenarTexto } from './ordenarTexto.js';
-  
+    import {ordenarTexto} from './ordenarTexto.js';
+
+    //EJECUTAR AL CARGAR
     document.addEventListener('DOMContentLoaded', () => {
+      // Ejecutar la función para ordenar el texto
       ordenarTexto('.ordenarLogo', 'LOADING...', {
+        speed: 10,})
       });
-    });
   </script>
   
 </body>
