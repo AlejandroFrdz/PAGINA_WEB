@@ -72,10 +72,10 @@ header ul{
     justify-content:  space-between;
     width: 30%;
     padding:15px 15px;
-    border-radius: 10px;
-    background-color: #2f1e30;
+    border-radius: 50px;
+    background-color: #312832;
     backdrop-filter: blur(10px);
-    box-shadow: 0 0 15px #4b214e;
+    box-shadow: 0 0 15px #4f3650;
 }
 
 header ul li{
@@ -112,8 +112,69 @@ header ul li{
 } 
 
 
+.yoSoy{
+    position: relative;
+    display:flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between ;
+}
+
+.yoSoy-Info{
+    position: absolute;
+    left:5%;
+}
+
+.yoSoy-Info .yoSoy-Info-titulo{
+    color: #c453cc;
+    padding:5px 16px;
+    border: 1px solid #4c2150;
+    width: 240px;
+    background-color: #141414;
+    box-shadow: 0 0 5px #4c2150;
+}
+
+.yoSoy-Info h1{
+    font-size: 60px;
+    max-width: 600px;
+    font-weight: 700;
+    line-height:70px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.yoSoy-Info p{
+    max-width: 550px;
+    line-height: 25px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
 
 
+.yoSoy-Info button{
+    color:white;
+    padding: 15px 35px;
+    border: 1px solid #4c2150;
+    background-color: #141414;
+    box-shadow: 0 0 5px #4c2150;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.soyYo-Info button:hover{
+
+    box-shadow: 0 0 15px #4c2150;
+}
+
+.gradiente{
+    background: linear-gradient(to right, #FFD700, #FFC107,  #D4AF37,#e5ab45, #eb9c52,#dc8b40,#e2af40,#eff140,#e0c429);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:animate-gradient 2.5s linear infinite;
+}
 
 
 
@@ -155,5 +216,12 @@ header ul li{
     .video-fondo{
         width: 100%;
         height: auto;
+    }
+}
+
+
+@keyframes animate-gradient {
+    to {
+        background-position: 200%;
     }
 }
