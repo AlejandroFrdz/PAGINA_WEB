@@ -27,6 +27,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 100px;
+    background-color: #141414; ;
 }
 
 .video-fondo{
@@ -34,7 +35,7 @@ body{
     right: 0;
     bottom: 0;
     z-index: -1;
-    mix-blend-mode: overlay;
+    mix-blend-mode: lighten;
 
 }
 
@@ -176,7 +177,64 @@ header ul li{
     animation:animate-gradient 2.5s linear infinite;
 }
 
+.yoSoyVideo-Box{
+    position: absolute;
+    right: 7%;
+}
 
+.yoSoyVideo-Box video{
+    height: 400px;
+}
+
+
+.scroll-abajo{
+    height: 50px;
+    width: 30px;
+    border: 2px solid #75337a;
+    position: absolute;
+    left:49%;
+    bottom: 8%;
+    border-radius: 50px;
+    cursor:pointer;
+    box-shadow: 0 0 15px #4c2150;
+}
+
+.scroll-abajo::before,
+.scroll-abajo::after{
+    content: '';
+    position: absolute;
+    top: 20%;
+    left:50%;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #75337a;
+    transform: translate(-50%, -100%) rotate(45deg);
+    border-top:transparent;
+    border-left:transparent;
+    animation: scroll-down 2s ease-in-out infinite;
+
+
+}
+
+.scroll-abajo::before{
+    top: 30%;
+    animation-delay: 0.5s;
+
+}
+
+
+@keyframes scroll-down {
+    0%{
+        opacity: 0;    }
+    30%, 60%{
+        opacity: 1;
+        }
+
+    100%{
+        top:90%;
+        opacity: 0;
+    }
+}
 
 
 
