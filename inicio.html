@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABOUT</title>
+    <title>FERNANDEZZZ© | PORTFOLIO</title>
     <link rel="stylesheet" href="styleInicio.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <video class= video-fondo loop autoplay muted plays-inline src="videos/prueba.MOV" type="video/MOV"></video> 
+
     <div class="container">
-        <video class= video-fondo loop autoplay muted plays-inline src="videos/prueba.MOV" type="video/MOV"></video> 
         <header>
             <div class="izquierda">
                 <img src="imgs/Recurso 3.png" alt="Logo">
@@ -29,6 +30,30 @@
             </div>
         </header>
     </div>
+    <section class="presentacion" id="presentacion">
+
+        <div class="glow-container">
+            <h1 class="glow-text">
+                <div id="bloqueTexto">
+                    <span class="ordenar" style="--i:0"></span>
+                    <span class="ordenar" style="--i:1"></span>
+                    <span class="ordenar" style="--i:2"></span>
+                    <span class="ordenar" style="--i:3"></span>
+                    <span class="ordenar" style="--i:4"></span>
+                    <span class="ordenar" style="--i:5"></span>
+                    <span class="ordenar" style="--i:6"></span>
+                    <span class="ordenar" style="--i:7"></span>
+                    <span class="ordenar" style="--i:8"></span>
+                    <span class="ordenar" style="--i:9"></span>
+                    <span class="ordenar" style="--i:10"></span>
+                </div>
+            </h1>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
     <section class="yoSoy">
         <div class="yoSoy-Info">
             <div class="yoSoy-Info-titulo">
@@ -45,7 +70,7 @@
         </div>
         <div class="yoSoyVideo-Box">
             <video autoplay loop muted plays-inline src="videos/prueba2.MOV" type="video/MOV"></video>
-            </video>
+            
         </div>
     
         <div class="scroll-abajo"></div>
@@ -54,7 +79,11 @@
 
 
     <div id="circuloCursor"></div>
-    <script src="appInicio.js"></script>
+    <!--<script src="appInicio.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main.js"></script>
+    
 
 </body>
 </html>

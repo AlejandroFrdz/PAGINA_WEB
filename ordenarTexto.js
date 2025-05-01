@@ -32,4 +32,3 @@ export function ordenarTexto(targetSelector, finalText, options = {}) {
   });
 }
 
-  animate();
