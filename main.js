@@ -82,7 +82,12 @@ ScrollTrigger.create({
       if (presentation && textoAnimado) {
           presentation.classList.add('hide');
           mainContent.classList.add('show');
-      }
+
+          setTimeout(() => {
+            presentation.style.display = 'none';
+
+      },800);
+    }
   },
   onLeaveBack: () => {
       if (presentation) {
@@ -196,3 +201,41 @@ window.addEventListener('load', () => {
   });
 
 });
+
+
+
+
+
+
+
+
+// Asegura que los elementos sean interactivos
+document.addEventListener('DOMContentLoaded', () => {
+  // Habilita interacción en el header
+  const header = document.querySelector('header');
+  if (header) {
+      header.style.pointerEvents = 'auto';
+      header.querySelectorAll('*').forEach(el => {
+          el.style.pointerEvents = 'auto';
+      });
+  }
+
+  // Solución definitiva para el cursor
+  const cursor = document.getElementById('circuloCursor');
+  if (cursor) {
+      cursor.style.pointerEvents = 'none';
+      document.addEventListener('mousemove', (e) => {
+          // Verifica si el cursor está sobre un elemento interactivo
+          const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
+          if (elementBelow && (elementBelow.tagName === 'A' || elementBelow.tagName === 'BUTTON' || elementBelow.onclick)) {
+              cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1.5)`;
+          } else {
+              cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) scale(1)`;
+          }
+      });
+  }
+});
+
+
+
+console.log("El script se está ejecutando");

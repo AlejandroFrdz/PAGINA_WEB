@@ -24,7 +24,7 @@ html {
     pointer-events: none;
     transform: translate(-50%, -50%);
     transition: background-color 0.3s ease;
-    z-index: 9999;
+    z-index: 10002;
   }
 
 .container{
@@ -35,7 +35,6 @@ html {
     flex-direction: column;
     align-items: center;
     gap: 100px;
-    background-color: #141414; ;
 }
 
 .video-fondo{
@@ -50,7 +49,7 @@ html {
 
 header{
     display: flex;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
@@ -61,7 +60,7 @@ header{
     backdrop-filter:blur(10px);
     padding: 0 30px;
     box-shadow:0 0 15px #141414;
-    z-index:999;
+    z-index:10001;
 
 }
 
